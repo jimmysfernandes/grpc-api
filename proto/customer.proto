@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package customers;
+
+option go_package = "v1/proto";
+
+message CustomerRequest {
+  string firstName = 1;
+  string lastName = 2;
+  string gender = 3;
+  string email = 4;
+}
+
+message CustomerResponse {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string gender = 4;
+  string email = 5;
+  bool   Enabled = 6;
+}
+
+message CustomerId {
+  string id = 1;
+}
+
+service CustomerService {
+  rpc Create(CustomerRequest) returns (CustomerResponse);
+  rpc FindById(CustomerId) returns (CustomerResponse);
+}
